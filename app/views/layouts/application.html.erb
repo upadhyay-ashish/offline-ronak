@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+  <title>Offline</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<p>Locally stored items: <span id="local-count">0</span></p>
+<p>You are working: <span id="status" class="offline">Offline</span></p>
+
+<%= yield %>
+
+</body>
+</html>
