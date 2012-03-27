@@ -3,20 +3,28 @@ function processData() {
 
     if (!navigator.onLine)
     {
-        var firstName = document.querySelector('#datum_name');
+        var firstName = document.querySelector('#datum_name');     var age = document.querySelector('#datum_age');
+var country = document.querySelector('#datum_country');
         var dataString = firstName.value;
-        saveDataLocally(dataString);
-        firstName.value = '';
-    }
+        var dataStringone = age.value;
+        var dataStringtwo = country.value;
+        saveDataLocally(dataString,dataStringone,dataStringtwo);
+        }
    }
 
 //called on submit if device is online from processData()
 function sendDataToServer(dataString) {
+    var orig_data=dataString.split('+');
+    var dataName=orig_data[0];
+    var dataAge=orig_data[1];
+    var dataCountry=orig_data[2];
 
     var data = {
         commit: "Create Datum",
         datum: {
-            name: dataString
+            name: dataName,
+		age: dataAge,
+           country: dataCountry
         }
     }
     $.ajax({
@@ -28,13 +36,18 @@ function sendDataToServer(dataString) {
 }
 
 //called on submit if device is offline from processData()
-function saveDataLocally(dataString) {
-
+function saveDataLocally(dataString,dataStringone,dataStringtwo) {
+    
     var timeStamp = new Date();
     timeStamp.getTime();
+var local_data = dataString+"+"+dataStringone+"+"+dataStringtwo;
 
     try {
-        localStorage.setItem(timeStamp, dataString);
+        localStorage.setItem(timeStamp, local_data);
+        alert("done");
+
+       
+
     } catch (e) {
 
         if (e == QUOTA_EXCEEDED_ERR) {
@@ -45,9 +58,10 @@ function saveDataLocally(dataString) {
 
 
 
-    var length = window.localStorage.length;
-    document.querySelector('#local-count').innerHTML = length;
+   var length = window.localStorage.length;
+   document.querySelector('#local-count').innerHTML = length;
 }
+
 
 //called if device goes online or when app is first loaded and device is online
 //only sends data to server if locally stored data exists

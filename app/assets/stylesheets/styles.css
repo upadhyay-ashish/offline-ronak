@@ -1,0 +1,32 @@
+/*
+*
+* Find more about this app by visiting
+* http://miniapps.co.uk/
+*
+* Copyright (c) 2010 Alex Gibson, http://miniapps.co.uk/
+* Released under MIT license
+* http://miniapps.co.uk/license/
+*
+*/
+/* Begin App Main styles */
+
+
+
+#status {
+color: #fff;
+padding: 5px;
+-webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.online {
+background-color: #66CC00;
+}
+
+.offline {
+background-color: red;
+}
+
+/* End App Main styles */
+

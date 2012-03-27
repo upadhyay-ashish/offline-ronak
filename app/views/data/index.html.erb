@@ -1,23 +1,21 @@
-<h1>Listing data</h1>
+<h1>Listing Data</h1>
 
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Age</th>
+    <th>Country</th>
   </tr>
 
 <% @data.each do |datum| %>
   <tr>
     <td><%= datum.name %></td>
-    <td><%= link_to 'Show', datum %></td>
-    <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
-    <td><%= link_to 'Destroy', datum, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+    <td><%= datum.age %></td>
+    <td><%= datum.country %></td>
+    </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Datum', new_datum_path %>
+<%= link_to 'New Data', new_datum_path %>
