@@ -13,7 +13,7 @@
     <% @data.each do |datum| %>
       <tr>
 	<td><%= datum.id %></td>
-	<td><%= link_to datum.name, datum_path(datum) %></td>
+	<td><%= datum.name %></td>
 	<td><%= datum.age %></td>
 	<td><%= datum.country %></td>
 	<td><%= datum.created_at.strftime("%d-%B-%Y %I:%M %P") %></td>
