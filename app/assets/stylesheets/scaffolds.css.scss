@@ -16,11 +16,14 @@ pre {
   font-size: 11px; }
 
 a {
-  color: #000;
+text-decoration:none;
+  color: white;
   &:visited {
-    color: #666; }
+  text-decoration:none;
+    color: white; }
   &:hover {
-    color: #fff;
+text-decoration:none;
+  color: white;
     background-color: #000; } }
 
 div {

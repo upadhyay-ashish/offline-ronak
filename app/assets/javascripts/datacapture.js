@@ -53,13 +53,9 @@ function saveDataLocally(dataString,dataStringone,dataStringtwo) {
 	}
     }
 
-
-
-
     var length = window.localStorage.length;
     document.querySelector('#local-count').innerHTML = length;
-
-	alert("Ashish");
+    return false;
 }
 
 
