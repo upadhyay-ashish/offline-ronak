@@ -18,7 +18,6 @@
 	<td><%= datum.country %></td>
 	<td><%= datum.created_at.strftime("%d-%B-%Y %I:%M %P") %></td>
 	<td>
-	  <%= link_to 'Edit', edit_datum_path(datum), :class => 'btn btn-mini' %>
 	  <%= link_to 'Destroy', datum_path(datum), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
 	</td>
       </tr>
