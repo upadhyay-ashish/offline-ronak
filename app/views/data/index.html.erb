@@ -1,21 +1,29 @@
-<h1>Listing Data</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Country</th>
-  </tr>
-
-<% @data.each do |datum| %>
-  <tr>
-    <td><%= datum.name %></td>
-    <td><%= datum.age %></td>
-    <td><%= datum.country %></td>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Country</th>
+      <th>Created at</th>
+      <th>Actions</th>
     </tr>
-<% end %>
+  </thead>
+  <tbody>
+    <% @data.each do |datum| %>
+      <tr>
+	<td><%= datum.id %></td>
+	<td><%= link_to datum.name, datum_path(datum) %></td>
+	<td><%= datum.age %></td>
+	<td><%= datum.country %></td>
+	<td><%= datum.created_at.strftime("%d-%B-%Y %I:%M %P") %></td>
+	<td>
+	  <%= link_to 'Edit', edit_datum_path(datum), :class => 'btn btn-mini' %>
+	  <%= link_to 'Destroy', datum_path(datum), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Data', new_datum_path %>
+<%= link_to 'New', new_datum_path, :class => 'btn btn-success' %>

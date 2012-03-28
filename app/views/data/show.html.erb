@@ -1,10 +1,22 @@
-<p id="notice"><%= notice %></p>
+<h1>/Datum</h1>
 
 <p>
-  <b>Name:</b>
+  <b>Name</b><br>
   <%= @datum.name %>
 </p>
 
+<p>
+  <b>Age</b><br>
+  <%= @datum.age %>
+</p>
 
-<%= link_to 'Edit', edit_datum_path(@datum) %> |
-<%= link_to 'Back', data_path %>
+<p>
+  <b>Country</b><br>
+  <%= @datum.country %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', data_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_datum_path(@datum), :class => 'btn' %>
+  <%= link_to 'Delete', datum_path(@datum), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

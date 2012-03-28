@@ -1,29 +1,24 @@
-<%= form_for(@datum) do |f| %>
-  <% if @datum.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this datum from being saved:</h2>
 
-      <ul>
-      <% @datum.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @datum, :html => { :class => 'form-inline' } do |f| %>
+  <fieldset>
+    <div>
+    <span class="badge badge-inverse">Name&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.text_field :name, :class => 'text_field', :placeholder => "Enter Name..." %>
+    </span>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-<div class="field">
-    <%= f.label :age %><br />
-    <%= f.text_field :age %>
-</div>
-<div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-</div>
-  <div class="actions">
-    <%= f.submit "Submit Form" %>
-  </div>
+    <div>
+    <span class="badge badge-inverse">Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.number_field :age, :class => 'number_field', :placeholder => "Enter Age..." %>
+    </span>
+    </div>
+    <div>
+    <span class="badge badge-inverse">Country
+      <%= f.text_field :country, :class => 'text_field', :placeholder => "Enter Country..." %>
+    </span>
+    </div>
+    <div class="form-actions">
+      <%= f.submit 'Create/Update', :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', data_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>

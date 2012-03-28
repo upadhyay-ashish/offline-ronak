@@ -3,14 +3,15 @@ function processData() {
 
     if (!navigator.onLine)
     {
-        var firstName = document.querySelector('#datum_name');     var age = document.querySelector('#datum_age');
-var country = document.querySelector('#datum_country');
-        var dataString = firstName.value;
-        var dataStringone = age.value;
-        var dataStringtwo = country.value;
-        saveDataLocally(dataString,dataStringone,dataStringtwo);
-        }
-   }
+	var firstName = document.querySelector('#datum_name');
+	var age = document.querySelector('#datum_age');
+	var country = document.querySelector('#datum_country');
+	var dataString = firstName.value;
+	var dataStringone = age.value;
+	var dataStringtwo = country.value;
+	saveDataLocally(dataString,dataStringone,dataStringtwo);
+    }
+}
 
 //called on submit if device is online from processData()
 function sendDataToServer(dataString) {
@@ -20,18 +21,18 @@ function sendDataToServer(dataString) {
     var dataCountry=orig_data[2];
 
     var data = {
-        commit: "Create Datum",
-        datum: {
-            name: dataName,
-		age: dataAge,
-           country: dataCountry
-        }
+	commit: "Create Datum",
+	datum: {
+	    name: dataName,
+	    age: dataAge,
+	    country: dataCountry
+	}
     }
     $.ajax({
-        type: "POST",
-        url: "/data",
-        data: data,
-        dataType: "json"
+	type: "POST",
+	url: "/data",
+	data: data,
+	dataType: "json"
     });
 }
 
@@ -40,26 +41,25 @@ function saveDataLocally(dataString,dataStringone,dataStringtwo) {
     
     var timeStamp = new Date();
     timeStamp.getTime();
-var local_data = dataString+"+"+dataStringone+"+"+dataStringtwo;
+    var local_data = dataString+"+"+dataStringone+"+"+dataStringtwo;
 
     try {
-        localStorage.setItem(timeStamp, local_data);
-        alert("done");
-
-       
+	localStorage.setItem(timeStamp, local_data);
 
     } catch (e) {
 
-        if (e == QUOTA_EXCEEDED_ERR) {
-            console.log('Limit has been exceeded!');
-        }
+	if (e == QUOTA_EXCEEDED_ERR) {
+	    console.log('Limit has been exceeded!');
+	}
     }
 
 
 
 
-   var length = window.localStorage.length;
-   document.querySelector('#local-count').innerHTML = length;
+    var length = window.localStorage.length;
+    document.querySelector('#local-count').innerHTML = length;
+
+	alert("Ashish");
 }
 
 
@@ -72,14 +72,14 @@ function sendLocalDataToServer() {
     var i = 0,
     dataString = '';
     while (i <= window.localStorage.length - 1) {
-        dataString = localStorage.key(i);
-        if (dataString) {
-            sendDataToServer(localStorage.getItem(dataString));
-            window.localStorage.removeItem(dataString);
-        }
-        else {
-            i++;
-        }
+	dataString = localStorage.key(i);
+	if (dataString) {
+	    sendDataToServer(localStorage.getItem(dataString));
+	    window.localStorage.removeItem(dataString);
+	}
+	else {
+	    i++;
+	}
     }
     document.querySelector('#local-count').innerHTML = window.localStorage.length;
     
@@ -102,15 +102,15 @@ function loaded() {
     //if online
     if (navigator.onLine) {
 
-        //update connection status
-        var status = document.querySelector('#status');
-        status.className = 'online';
-        status.innerHTML = 'Online';
+	//update connection status
+	var status = document.querySelector('#status');
+	status.className = 'online';
+	status.innerHTML = 'Online';
 
-        //if local data exists, send try post to server
-        if (length !== 0) {
-            sendLocalDataToServer();
-        }
+	//if local data exists, send try post to server
+	if (length !== 0) {
+	    sendLocalDataToServer();
+	}
     }
 
     //listen for connection changes
