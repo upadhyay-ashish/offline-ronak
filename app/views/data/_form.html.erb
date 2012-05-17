@@ -6,21 +6,45 @@
       <%= f.text_field :name, :class => 'text_field', :placeholder => "Enter Name..." %>
     </span>
     </div>
+    <br />
     <div>
     <span class="badge badge-inverse">Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <%= f.number_field :age, :class => 'number_field', :placeholder => "Enter Age..." %>
     </span>
     </div>
+    <br />
     <div>
     <span class="badge badge-inverse">Country
       <%= f.text_field :country, :class => 'text_field', :placeholder => "Enter Country..." %>
     </span>
     </div>
+    <br />
+    <div>
+    <span class="badge badge-inverse">Gender </span>
+    &nbsp&nbsp&nbsp
+      Male&nbsp<%= f.radio_button("gender", "male") %>&nbsp&nbsp
+      Female&nbsp<%= f.radio_button("gender", "female") %>
+   
+    </div>
+    <br />
+    <div>
+    <span class="badge badge-inverse">Are you a graduate ?
+    </span><br />
+      <%= f.select(:q1, Datum::OPTION1)  %>
+    </div>
+    <br />
+    <div>
+    <span class="badge badge-inverse">What do you prefer recieving emails from us ?
+    </span><br />
+     I prefer to receive emails <%= f.check_box :q2 %>
+    </div>
+    <br /><br />
     <div class="form-actions">
-      <%= f.submit'Create/Update', :class => 'btn btn-primary' %>
+      <%= f.submit'Create/Update', :class => 'btn btn-primary submit' %>
     </div>
   </fieldset>
 <% end %>
 <script>
-
+$(function(){
+});
   </script>
