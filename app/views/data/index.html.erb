@@ -19,7 +19,7 @@
   <td><%= datum.gender %></td>
   <td><%= datum.q1 %></td>
   <td>
-    <% if(datum.q2 == 1) %>
+    <% if(datum.q2.to_i == 1) %>
       Yes
     <% else %>
       No
